@@ -1,0 +1,23 @@
+Import('rtconfig')
+from building import *
+
+cwd = GetCurrentDir()
+src = []
+path = [cwd + '/inc']
+libs = ['']
+libpath = [cwd + '/libs']
+
+if rtconfig.CROSS_TOOL == 'gcc':
+    libs += ['libsmartconfig_gcc']
+elif rtconfig.CROSS_TOOL == 'keil':
+    libs += ['libsmartconfig_keil']
+else:
+    libs += ['libsmartconfig_iar']
+
+if GetDepend(['RT_USING_SMARTCONFIG_DEMO']):
+    src += ['smartconfig_demo.c']
+
+group = DefineGroup('smartconfig', src, depend = ['RT_USING_SMARTCONFIG_LIB'], CPPPATH = path, LIBS = libs, LIBPATH = libpath)
+
+Return('group')
+

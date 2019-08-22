@@ -1,0 +1,91 @@
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x08010100;
+/*-Memory Regions-*/
+/* rom 959K */
+define symbol __ICFEDIT_region_ROM_start__ = 0x08010100;
+define symbol __ICFEDIT_region_ROM_end__   = 0x080FFFFF;
+/* ram 160k */
+define symbol __ICFEDIT_region_RAM_start__ = 0x20000000;
+define symbol __ICFEDIT_region_RAM_end__   = 0x20028000;
+/* ram 80k */
+define symbol __ICFEDIT_region_RAM2_start__ = 0x20028000;
+define symbol __ICFEDIT_region_RAM2_end__   = 0x2003C000;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__ = 0xc00;
+define symbol __ICFEDIT_size_heap__   = 0x1A000;
+/**** End of ICF editor section. ###ICF###*/
+
+define memory mem with size = 4G;
+define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region RAM_region   = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+define region RAM2_region  = mem:[from __ICFEDIT_region_RAM2_start__   to __ICFEDIT_region_RAM2_end__];
+
+define block CSTACK    with alignment = 8, size = __ICFEDIT_size_cstack__   { };
+
+define block _BSS with alignment = 32, fixed order
+{
+    section .bss* object memp.o,
+    section .bss* object wm_param.o,
+    section .bss* object wm_fwup.o,
+    section .bss* object tls_rf_tx_iq.o,
+    section .bss* object tx_lo_cal.o,
+    section .bss* object ef_env.o,
+    section .bss* object dns.o,
+    /* Other bss data */
+    section .bss* object kservice.o,
+    section .bss* object mem.o,
+    section .bss* object scheduler.o,
+    section .bss* object ntp.o,
+    section .bss* object dfs.o,
+    section .bss* object dfs_file.o,
+    section .bss* object pin.o,
+    section .bss* object soft_rtc.o,
+    section .bss* object spi_flash_sfud.o,
+    section .bss* object sfud.o,
+    section .bss* object wlan_cfg.o,
+    section .bss* object wlan_lwip.o,
+    section .bss* object wlan_mgnt.o,
+    section .bss* object wlan_prot.o,
+    section .bss* object shell.o,
+    section .bss* object netdb.o,
+    section .bss* object sockets.o,
+    section .bss* object ip.o,
+    section .bss* object tcp_in.o,
+    section .bss* object dhcp.o,
+    section .bss* object etharp.o,
+    section .bss* object ip4_addr.o,
+    section .bss* object netdev_ipaddr.o,
+    section .bss* object sal_socket.o,
+    section .bss* object wm_gpio.o,
+    section .bss* object wm_irq.o,
+    section .bss* object wm_efuse.o,
+    section .bss* object wm_dma.o,
+    section .bss* object wm_timer.o,
+    section .bss* object wm_i2c.o,
+    section .bss* object wm_adc.o,
+    section .bss* object rtthread_patch.o,
+    section .bss* object drv_uart.o,
+    section .bss* object drv_wifi.o,
+    section .bss* object drv_spi.o,
+    section .bss* object smartconfig.o,
+    section .bss* object random.o,
+    section .bss* object tls_wl_util.o,
+    section .bss* object common.o,
+    section .bss* object stdio_streams.o,
+    section .bss* object rand.o,
+    section .bss* object localtime.o,
+    section .bss* object asctime.o,
+    section .bss* object libspace.o
+};
+
+initialize by copy { readwrite };
+do not initialize  { section .noinit };
+
+place at address mem:__ICFEDIT_intvec_start__ { readonly section .intvec };
+
+place in ROM_region   { readonly };
+place in RAM2_region  { block _BSS};
+place in RAM_region   { readwrite, last block CSTACK};

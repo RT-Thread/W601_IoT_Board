@@ -1,0 +1,22 @@
+[
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.1.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/iot/iot_cloud/tencent-iothub", 
+  "ver": "v3.0.2", 
+  "name": "TENCENT_IOTHUB"
+ }, 
+ {
+  "path": "/packages/tools/EasyFlash", 
+  "ver": "v3.3.0", 
+  "name": "EASYFLASH"
+ }, 
+ {
+  "path": "/packages/system/fal", 
+  "ver": "v0.3.0", 
+  "name": "FAL"
+ }
+]

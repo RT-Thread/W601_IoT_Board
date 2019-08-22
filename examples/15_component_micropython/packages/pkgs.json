@@ -1,0 +1,32 @@
+[
+ {
+  "path": "/packages/iot/cJSON", 
+  "ver": "v1.0.2", 
+  "name": "CJSON"
+ }, 
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.1.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/security/tinycrypt", 
+  "ver": "v1.0.0", 
+  "name": "TINYCRYPT"
+ }, 
+ {
+  "path": "/packages/language/micropython", 
+  "ver": "v1.10.1", 
+  "name": "MICROPYTHON"
+ }, 
+ {
+  "path": "/packages/tools/adbd", 
+  "ver": "v1.1.1", 
+  "name": "ADBD"
+ }, 
+ {
+  "path": "/packages/system/fal", 
+  "ver": "v0.3.0", 
+  "name": "FAL"
+ }
+]

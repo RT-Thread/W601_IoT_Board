@@ -1,0 +1,12 @@
+[
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.1.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/tools/qrcode", 
+  "ver": "v0.1.0", 
+  "name": "QRCODE"
+ }
+]

@@ -1,0 +1,24 @@
+Import('rtconfig')
+from building import *
+
+cwd = GetCurrentDir()
+src = []
+path = [cwd + '/inc']
+libs = ['']
+libpath = [cwd + '/libs']
+
+if rtconfig.CROSS_TOOL == 'gcc':
+    libs += ['libcloudsdk_2.0.0_armcm3_gcc']
+    libs += ['librt_ota_noalgo_0.2.3_armcm3_gcc']
+
+elif rtconfig.CROSS_TOOL == 'keil':
+    libs += ['libcloudsdk_2.0.0_armcm3_keil']
+    libs += ['librt_ota_noalgo_0.2.3_armcm3_keil']
+else:
+    libs += ['libcloudsdk_2.0.0_armcm3_iar']
+    libs += ['librt_ota_noalgo_0.2.3_armcm3_iar']
+
+group = DefineGroup('cloudsdk', src, depend = ['RT_USING_CLOUDSDK_LIB'], CPPPATH = path, LIBS = libs, LIBPATH = libpath)
+
+Return('group')
+
