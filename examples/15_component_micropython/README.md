@@ -165,15 +165,19 @@ MicroPython 提供丰富的内建模块用来完成相关的程序功能。同�
 - 控制 LED 灯闪烁：开发板上第 30 号 pin 为 红色 LED 灯。下面代码使 LED 灯周期闪烁。
 
 ```python
-import time
+import utime as time
 from machine import Pin
 
-LED = Pin(("LED1", 30), Pin.OUT_PP)     #将引脚设置为输出模式
+PIN_LED_R = 30    # PA13, get the pin number from get_pin_number.py
+
+# create led object from pin PIN_LED_R, Set pin PIN_LED_R to output mode
+led = Pin(("led_red", PIN_LED_R), Pin.OUT_PP)
+
 while True:
-    LED.value(1)
-    time.sleep_ms(500)
-    LED.value(0)
-    time.sleep_ms(500)
+    led.value(0)  # Set led turn on
+    time.sleep(0.5)
+    led.value(1)  # Set led turn off
+    time.sleep(0.5)
 ```
 
 针对自己的开发板修改引脚号，即可看到 LED 灯按照指定的频率闪烁。
@@ -183,9 +187,15 @@ while True:
 ```python
 import network
 
-nic = network.WLAN(network.STA_IF)              #创建一个网络设备
-nic.active(True)                                #开启此设备
-nic.connect('your-ssid','your-password')        #连接
+wlan = network.WLAN(network.STA_IF)
+print(wlan.scan())
+
+wlan.connect("test", "123456789")
+
+if wlan.isconnected():
+    print("wifi connect successful")
+else:
+    print("wifi connect failed")
 ```
 
 其中 'your-ssid' 是 WIFI 名称，'your-password' 是 WIFI 密码。开发者根据实际情况自行修改。 
@@ -208,6 +218,8 @@ lcd.circle(150, 150, 80)                # 以圆心位置（150,150），半径�
 除了可以通过阅读用户手册来了解 MicroPython 的使用方式，还可以直接在 VScode 中搜索 `RT-Thread MicroPython` 来使用 RT-Thread 推出的 MicroPython 开发环境，在开发环境中直接运行示例程序来学习 MicroPython 开发。如下图所示：
 
 ![run_example](../../docs/figures/15_component_micropython/run_example.gif)
+
+![ide_example](../../docs/figures/15_component_micropython/ide_example.png)
 
 ## 注意事项
 

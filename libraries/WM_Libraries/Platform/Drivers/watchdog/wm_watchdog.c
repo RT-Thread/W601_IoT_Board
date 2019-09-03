@@ -13,10 +13,10 @@
 #include "wm_cpu.h"
 #include "wm_watchdog.h"
 
-void WDG_IRQHandler(void)
-{
-    printf("WDG IRQ\n");
-}
+// void WDG_IRQHandler(void)
+// {
+    // wm_printf("WDG IRQ\n");
+// }
 
 /**
  * @brief          This function is used to clear watchdog

@@ -73,10 +73,18 @@ def dist_do_building(BSP_ROOT):
     bsp_copy_files(tools_path, tools_dir)
 
     iar_template_file =  os.path.join(dist_dir, 'template.ewp')
-    bsp_update_template(iar_template_file, '$PROJ_DIR$\drivers\linker_scripts', '$PROJ_DIR$\..\..\drivers\linker_scripts')
+    bsp_update_template(iar_template_file, '$PROJ_DIR$\\drivers\\linker_scripts', '$PROJ_DIR$\\..\\..\\drivers\\linker_scripts')
 
     mdk_template_file =  os.path.join(dist_dir, 'template.uvprojx')
-    bsp_update_template(mdk_template_file, '<ScatterFile>.\drivers\linker_scripts\link.sct</ScatterFile>', '<ScatterFile>..\..\drivers\linker_scripts\link.sct</ScatterFile>')
+    bsp_update_template(mdk_template_file, '<ScatterFile>.\\drivers\\linker_scripts\\link.sct</ScatterFile>', '<ScatterFile>..\\..\\drivers\\linker_scripts\\link.sct</ScatterFile>')
+
+    makimg_file =  os.path.join(dist_dir, 'makeimg.bat')
+    bsp_update_template(makimg_file, 'set wmlib_path=.\\libraries\\WM_Libraries', 'set wmlib_path=..\\..\\libraries\\WM_Libraries')
+    bsp_update_template(makimg_file, 'set tools_path=.\\tools', 'set tools_path=..\\..\\tools')
+
+    makimg_file =  os.path.join(dist_dir, 'makeimg.py')
+    bsp_update_template(makimg_file, 'wmlib_path=\'./libraries/WM_Libraries\'', 'wmlib_path=\'../../libraries/WM_Libraries\'')
+    bsp_update_template(makimg_file, 'tools_path=\'./tools\'', 'tools_path=\'../../tools\'')
 
     bsp_update_driver_kconfig(dist_dir)
     bsp_update_library_kconfig(dist_dir)

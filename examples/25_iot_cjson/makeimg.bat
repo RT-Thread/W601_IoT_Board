@@ -13,14 +13,10 @@ set wmlib_path=..\..\libraries\WM_Libraries
 @rem Setting tools path
 set tools_path=..\..\tools
 
-@rem Path Check
-if "%wmlib_path:~0,1%" == "." (set wmlib_path=%~dp0%wmlib_path%)
-if not exist "%wmlib_path%" (set wmlib_path=.\libraries\WM_Libraries)
-if "%tools_path:~0,1%" == "." (set tools_path=%~dp0%tools_path%)
-if not exist "%tools_path%" (set tools_path=.\tools)
+@rem Enter project folder
+CD .
 
 @rem set tools full path
-if "%tools_path:~0,1%" == "." (set tools_path=%~dp0%tools_path%)
 @rem Setting the 1M flash layout file
 set layout_1M_file=%tools_path%\w60x_fal_pt_1M.bin
 @rem Setting the 2M flash layout file
@@ -34,9 +30,8 @@ set rtt_secboot_file=%tools_path%\rtt_secboot.img
 @rem Setting the ota packager tool path
 set rtt_ota_tool_file=%tools_path%\ota_packager\rt_ota_packaging_tool_cli.exe
 
-if "%wmlib_path:~0,1%" == "." (set wmlib_path=%~dp0%wmlib_path%)
 @rem find winnermicro libraries full path
-for /f "delims=" %%i in ('dir /ad /b /s %wmlib_path%*') do (set wmlib_path_full=%%i)
+set wmlib_path_full=%wmlib_path%
 @rem Setting the version.txt file path
 set version_file=%wmlib_path_full%\Tools\version.txt
 @rem Setting the secboot.img file path
@@ -49,9 +44,6 @@ set makeimg_all_file=%wmlib_path_full%\Tools\makeimg_all.exe
 @rem Prepare to generate firmware
 
 @rem Get the full path
-if "%out_path:~0,1%" == "." (set out_path=%~dp0%out_path%)
-if "%bin_file:~0,1%" == "." (set bin_file=%~dp0%bin_file%)
-if "%secboot_file:~0,1%" == "." (set secboot_file=%~dp0%secboot_file%)
 
 @rem Create output folder
 if not exist "%out_path%" (md "%out_path%")
@@ -79,7 +71,6 @@ if not "%debug_info%"=="0" (echo bin_file_name:%bin_file_name% & echo bin_name:%
 echo makeimg %bin_name%.rbl ...
 
 @rem Get the full path
-if "%rtt_ota_tool_file:~0,1%" == "." (set rtt_ota_tool_file=%~dp0%rtt_ota_tool_file%)
 if exist "%rtt_ota_tool_file%" ("%rtt_ota_tool_file%" -f "%out_path%\%bin_file_name%" -v 1.1.0 -p app -c gzip)
 
 echo makeimg 1M Flash...
@@ -126,10 +117,6 @@ if exist "%out_path%\%bin_name%%file_pos_2M%.img" (del "%out_path%\%bin_name%%fi
 if not "%make_fal%"=="1" ( goto end)
 
 @rem Get the full path
-if "%layout_1M_file:~0,1%" == "." (set layout_1M_file=%~dp0%layout_1M_file%)
-if "%layout_2M_file:~0,1%" == "." (set layout_2M_file=%~dp0%layout_2M_file%)
-if "%layout_16M_file:~0,1%" == "." (set layout_16M_file=%~dp0%layout_16M_file%)
-if "%makeimg_new_fls:~0,1%" == "." (set makeimg_new_fls=%~dp0%makeimg_new_fls%)
 
 @rem Check whether the file exists
 if not exist "%layout_1M_file%" (echo makeimg err! No makeimg file found: "%layout_1M_file%" & goto end)

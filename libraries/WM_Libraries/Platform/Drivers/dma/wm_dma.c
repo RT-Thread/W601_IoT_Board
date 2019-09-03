@@ -321,7 +321,7 @@ unsigned char tls_dma_request(unsigned char ch, unsigned char flags)
 
 	    if (8 == i)
 	    {
-        		printf("!!!there is no free DMA channel.!!!\n");
+        		wm_printf("!!!there is no free DMA channel.!!!\n");
         		freeCh = 0;
         }
 	}
@@ -333,7 +333,7 @@ unsigned char tls_dma_request(unsigned char ch, unsigned char flags)
         	}
         	else
         	{
-        		printf("!!!there is no free DMA channel.!!!\n");
+        		wm_printf("!!!there is no free DMA channel.!!!\n");
         		freeCh = 0;
         	}
 	}
