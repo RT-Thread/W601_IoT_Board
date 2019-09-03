@@ -177,7 +177,7 @@ DebugMon_Handler
         EXTERN TIM3_IRQHandler
         EXTERN TIM4_IRQHandler
         EXTERN TIM5_IRQHandler
-        EXTERN WDG_IRQHandler
+        PUBWEAK WDG_IRQHandler
         PUBWEAK PMU_IRQHandler
         PUBWEAK FLASH_IRQHandler
         EXTERN PWM_IRQHandler
@@ -202,6 +202,7 @@ PMU_IRQHandler
 FLASH_IRQHandler
 I2S_IRQHandler
 UART2_IRQHandler
+WDG_IRQHandler
         B .
 
         END

@@ -449,7 +449,7 @@ u16 adc_get_inputVolt(u8 channel)
     tls_adc_stop(0);
     
     signedToUnsignedData(&average, &adc_offset);
-    printf("\r\ninputVolt:%.2f", ((average-8192.0)/8192*2.25/1.2 + 1.584));
+    //printf("\r\ninputVolt:%.2f", ((average-8192.0)/8192*2.25/1.2 + 1.584));
     return average;
 }
 
@@ -467,7 +467,7 @@ u16 adc_get_interVolt(void)
 
     signedToUnsignedData(&voltValue, &adc_offset);
 	float voltage = ( 1.214 - ((float)voltValue-8192)/8192*2.25/1.2 )*2;
-	printf("\r\ninterVolt:%.2f", voltage);
+	//printf("\r\ninterVolt:%.2f", voltage);
     return voltValue;
 }
 

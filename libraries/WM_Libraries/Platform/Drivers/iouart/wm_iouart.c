@@ -49,7 +49,7 @@ void iouart_timer_cb(void)
             // cnt=%d,bit=%d,%d,%d,%d\n",io_uart.bitcnt,io_uart.bit[0],io_uart.bit[1],io_uart.bit[2],bit);
                 if (bit != 0)
                 {
-                    printf("\nstart bit err\n");
+                    wm_printf("\nstart bit err\n");
                 // tls_timer_stop();
                 // tls_gpio_int_enable(IO_UART_RX,
                 // TLS_GPIO_INT_TRIG_LOW_LEVEL);
@@ -100,7 +100,7 @@ void iouart_timer_cb(void)
                             (io_uart.recv.head, io_uart.recv.tail,
                              TLS_IO_UART_RX_BUF_SIZE) <= 1)
                         {
-                            printf("\nrx buf overrun\n");
+                            wm_printf("\nrx buf overrun\n");
                             io_uart.bitnum = 0;
                             io_uart.bitcnt = 0;
                             return;
@@ -114,7 +114,7 @@ void iouart_timer_cb(void)
                     }
                     else
                     {
-                        printf("\nstop bit err\n");
+                        wm_printf("\nstop bit err\n");
                     }
                     io_uart.bitnum = 0;
                     io_uart.bitcnt = 0;

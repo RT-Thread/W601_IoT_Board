@@ -1185,14 +1185,14 @@ void tls_uart_test(void)
         // tls_uart_tx("\n\r",2);
             tls_uart_write_sync(TLS_UART_1, testbuf, datalen);
             len = tls_uart_tx_length(TLS_UART_1);
-            printf("\ntx len=%d\n", len);
+            wm_printf("\ntx len=%d\n", len);
 
             len = tls_uart_tx_length();
-            printf("\ntx len 0=%d\n", len);
+            wm_printf("\ntx len 0=%d\n", len);
         // tls_uart_tx("\n\r",2);
             tls_uart_write(TLS_UART_1, "abcde", 5);
             len = tls_uart_tx_length(TLS_UART_1);
-            printf("\ntx len 1=%d\n", len);
+            wm_printf("\ntx len 1=%d\n", len);
             flag = 0;
             datalen = 0;
         }

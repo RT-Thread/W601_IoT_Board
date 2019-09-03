@@ -94,7 +94,7 @@ int tls_i2c_wait_ack(void)
 		errtime ++;
 		if(errtime > 512)
 		{
-			printf("wait ack err\n");
+			wm_printf("wait ack err\n");
 			tls_i2c_stop();
 			return WM_FAILED;
 		}
@@ -225,7 +225,7 @@ void I2C_IRQHandler(void)
 	I2C->CR_SR = 1;
 	if (i2c_sr & 0x20)
 	{
-		printf("I2C AL lost\r\n");
+		wm_printf("I2C AL lost\r\n");
 	}
 	if (i2c_sr & 0x01)
 	{

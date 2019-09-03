@@ -173,7 +173,7 @@ void SDIO_TX_CMD_IRQHandler(void)
 
 void SPI_HS_IRQHandler(void)
 {
-    printf("spi HS irqhandle\n");
+    wm_printf("spi HS irqhandle\n");
 }
 
 void hspi_free_rxdesc(struct tls_hspi_rx_desc *rx_desc)
@@ -436,7 +436,7 @@ int tls_hspi_tx_data(char *txbuf, int len)
 
     if (NULL == txbuf || len <= 0 || len > (HSPI_TXBUF_SIZE * HSPI_TX_DESC_NUM))
     {
-        printf("\nhspi tx param error\n");
+        wm_printf("\nhspi tx param error\n");
         return 0;
     }
     tx_desc = g_slave_hspi.curr_tx_desc;
@@ -453,7 +453,7 @@ int tls_hspi_tx_data(char *txbuf, int len)
 #if HSPI_TX_MEM_MALLOC
         if (tx_desc->txbuf_addr != NULL)
         {
-            printf("\nhspi txbuf not null,error %x\n", tx_desc->txbuf_addr);
+            wm_printf("\nhspi txbuf not null,error %x\n", tx_desc->txbuf_addr);
             if (tx_desc->txbuf_addr == tx_desc->buf_addr[0])
             {
                 mem_free((void *) tx_desc->txbuf_addr);
@@ -461,7 +461,7 @@ int tls_hspi_tx_data(char *txbuf, int len)
             }
             else                // 不应该出现
             {
-                printf("\nhspi tx mem error\n");
+                wm_printf("\nhspi tx mem error\n");
                 break;
             }
         }
@@ -469,7 +469,7 @@ int tls_hspi_tx_data(char *txbuf, int len)
         tx_desc->txbuf_addr = (u32) mem_malloc(txlen + 1);
         if (NULL == tx_desc->txbuf_addr)
         {
-            printf("\nhspi tx data malloc error\n");
+            wm_printf("\nhspi tx data malloc error\n");
             break;
         }
         tx_desc->buf_addr[0] = tx_desc->txbuf_addr;

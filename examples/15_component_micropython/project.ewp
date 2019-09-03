@@ -218,6 +218,7 @@
           <state>__inline__=inline</state>
           <state>RT_USING_DLIBC</state>
           <state>_DLIB_FILE_DESCRIPTOR</state>
+          <state>_DLIB_THREAD_SUPPORT</state>
           <state>WM_W600</state>
           <state>__inline=inline</state>
           <state>__inline__=inline</state>
@@ -1294,6 +1295,7 @@
           <state>__inline__=inline</state>
           <state>RT_USING_DLIBC</state>
           <state>_DLIB_FILE_DESCRIPTOR</state>
+          <state>_DLIB_THREAD_SUPPORT</state>
           <state>WM_W600</state>
           <state>__inline=inline</state>
           <state>__inline__=inline</state>
@@ -2926,6 +2928,9 @@
   <group>
     <name>DeviceDrivers</name>
     <file>
+      <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\hwtimer\hwtimer.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\i2c\i2c_core.c</name>
     </file>
     <file>
@@ -2936,6 +2941,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\misc\pin.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\misc\adc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\misc\rt_drv_pwm.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\rtc\rtc.c</name>
@@ -2978,6 +2989,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\src\workqueue.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\watchdog\watchdog.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_dev.c</name>
@@ -3379,10 +3393,16 @@
       <name>$PROJ_DIR$\..\..\drivers\pin_map.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\drivers\drv_adc.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\drivers\drv_wifi.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\drivers\drv_pin.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\drivers\drv_hw_timer.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\drivers\drv_soft_i2c.c</name>
@@ -3397,7 +3417,13 @@
       <name>$PROJ_DIR$\..\..\drivers\drv_lcd.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\drivers\drv_pwm.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\drivers\drv_rtc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\drivers\drv_wdt.c</name>
     </file>
   </group>
 </project>
