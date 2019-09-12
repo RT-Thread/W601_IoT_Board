@@ -51,12 +51,6 @@ mq_publish() 函数用来向指定的主题发布消息。例程里的主题就�
 本例程的部分示例代码如下所示：
 
 ```c
-#define MQTT_URI                "tcp://iot.eclipse.org:1883"
-#define MQTT_USERNAME           "admin"
-#define MQTT_PASSWORD           "admin"
-#define MQTT_SUBTOPIC           "/mqtt/test"
-#define MQTT_PUBTOPIC           "/mqtt/test"
-
 int main(void)
 {
     /* 配置 wifi 工作模式 */
@@ -154,36 +148,36 @@ static void mqtt_online_callback(MQTTClient *c)
 按下复位按键重启开发板，开发板会自动连上 WiFi ，可以看到板子会打印出如下信息：
 
 ```shell
- \ | /                                                                          
-- RT -     Thread Operating System                                              
- / | \     4.0.1 build Jun  3 2019                                              
- 2006 - 2019 Copyright by rt-thread team                                        
-lwIP-2.0.2 initialized!                                                         
-[SFUD] Find a Winbond flash chip. Size is 16777216 bytes.                       
-[SFUD] w25q128 flash device is initialize success.                              
-[I/sal.skt] Socket Abstraction Layer initialize success.                        
-[I/WLAN.dev] wlan init success                                                  
-[I/WLAN.lwip] eth device init ok name:w0                                        
-[I/FAL] RT-Thread Flash Abstraction Layer (V0.3.0) initialize success.          
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.2 build Sep 10 2019
+ 2006 - 2019 Copyright by rt-thread team
+lwIP-2.0.2 initialized!
+[SFUD] Find a Winbond flash chip. Size is 16777216 bytes.
+[SFUD] w25q128 flash device is initialize success.
+[I/sal.skt] Socket Abstraction Layer initialize success.
+[I/WLAN.dev] wlan init success
+[I/WLAN.lwip] eth device init ok name:w0
+[I/FAL] RT-Thread Flash Abstraction Layer (V0.3.0) initialize success.
 [Flash] (packages\EasyFlash-v3.3.0\src\ef_env.c:152) ENV start address is 0x0000
-0000, size is 4096 bytes.                                                       
-[Flash] (packages\EasyFlash-v3.3.0\src\ef_env.c:821) Calculate ENV CRC32 number 
-is 0xD6363A94.                                                                  
-[Flash] (packages\EasyFlash-v3.3.0\src\ef_env.c:833) Verify ENV CRC32 result is 
-OK.                                                                             
-[Flash] EasyFlash V3.3.0 is initialize success.                                 
-[Flash] You can get the latest version on https://github.com/armink/EasyFlash . 
-msh />[I/WLAN.mgnt] wifi connect success ssid:test                        
-[D/main] Start mqtt client and subscribe topic:/mqtt/test/rtthread5125        #启动 MQTT 客户端  
-[I/main] Start to connect mqtt server                                           
-[D/MQTT] ipv4 address port: 1883                                                
-[D/MQTT] HOST = 'iot.eclipse.org'                                               
-[I/WLAN.lwip] Got IP address : 192.168.12.92                                    
-[I/MQTT] MQTT server connect success                                            
-[I/MQTT] Subscribe #0 /mqtt/test/rtthread5125 OK!                               
-[D/main] Connect mqtt server success                                            
-[D/main] Publish message: Hello,RT-Thread! to topic: /mqtt/test/rtthread5125   #发布消息 
-[D/main] Topic: /mqtt/test/rtthread5125 receive a message: Hello,RT-Thread!    #收到订阅消息
+0000, size is 4096 bytes.
+[Flash] (packages\EasyFlash-v3.3.0\src\ef_env.c:821) Calculate ENV CRC32 number
+is 0xD6363A94.
+[Flash] (packages\EasyFlash-v3.3.0\src\ef_env.c:833) Verify ENV CRC32 result is
+OK.
+[Flash] EasyFlash V3.3.0 is initialize success.
+[Flash] You can get the latest version on https://github.com/armink/EasyFlash .
+msh />[I/WLAN.mgnt] wifi connect success ssid:test
+[D/main] Start mqtt client and subscribe topic:/mqtt/test/rtthread5125        #启动 MQTT 客户端
+[I/main] Start to connect mqtt server
+[D/MQTT] ipv4 address port: 1883
+[D/MQTT] HOST = 'mqtt.rt-thread.com'
+[I/WLAN.lwip] Got IP address : 192.168.12.49
+[I/MQTT] MQTT server connect success
+[I/MQTT] Subscribe #0 /mqtt/test/rtthread9660 OK!
+[D/main] Connect mqtt server success
+[D/main] Publish message: Hello,RT-Thread! to topic: /mqtt/test/rtthread9660   #发布消息
+[D/main] Topic: /mqtt/test/rtthread9660 receive a message: Hello,RT-Thread!    #收到订阅消息
 ```
 
 我们可以看到， WiFi 连接成功后，MQTT 客户端就自动连接了服务器，并订阅了我们指定的主题。连接服务器成功，处于在线状态后，发布了一条 Hello,RT-Thread! 的消息，我们很快接收到了服务器推送过来的这条消息。

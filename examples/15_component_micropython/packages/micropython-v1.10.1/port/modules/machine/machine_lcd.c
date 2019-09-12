@@ -189,6 +189,30 @@ STATIC mp_obj_t machine_lcd_set_color(size_t n_args, const mp_obj_t *args) {
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(machine_lcd_set_color_obj, 3, 3, machine_lcd_set_color);
 
+/// \method show_image array
+///
+/// display the image on the lcd..
+/// @param   x       x position
+/// @param   y       y position
+/// @param   length  length of image
+/// @param   wide    wide of image
+/// @param   p       image_array
+STATIC mp_obj_t machine_lcd_show_image(size_t n_args, const mp_obj_t *args) {
+    rt_uint16_t x = mp_obj_get_int(args[1]);
+    rt_uint16_t y = mp_obj_get_int(args[2]);
+    rt_uint16_t length = mp_obj_get_int(args[3]);
+    rt_uint16_t wide = mp_obj_get_int(args[4]);
+
+    mp_buffer_info_t bufinfo;
+    if (mp_get_buffer(args[5], &bufinfo, MP_BUFFER_READ)) 
+    {
+        lcd_show_image( x, y, length, wide, (const rt_uint8_t *)bufinfo.buf);
+    }
+
+    return mp_const_none;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(machine_lcd_show_image_obj, 6, 6, machine_lcd_show_image);
+
 STATIC const mp_rom_map_elem_t machine_lcd_locals_dict_table[] = {
     // instance methods
     { MP_ROM_QSTR(MP_QSTR_light), MP_ROM_PTR(&machine_lcd_light_obj) },
@@ -199,6 +223,7 @@ STATIC const mp_rom_map_elem_t machine_lcd_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_rectangle), MP_ROM_PTR(&machine_lcd_rectangle_obj) },
     { MP_ROM_QSTR(MP_QSTR_circle), MP_ROM_PTR(&machine_lcd_circle_obj) }, 
     { MP_ROM_QSTR(MP_QSTR_set_color), MP_ROM_PTR(&machine_lcd_set_color_obj) }, 
+    { MP_ROM_QSTR(MP_QSTR_show_image), MP_ROM_PTR(&machine_lcd_show_image_obj) }, 
     // color
     { MP_ROM_QSTR(MP_QSTR_WHITE), MP_ROM_INT(WHITE) },
     { MP_ROM_QSTR(MP_QSTR_BLACK), MP_ROM_INT(BLACK) },

@@ -34,9 +34,10 @@
  * tcp://[fe80::20c:29ff:fe9a:a07e]:1883
  * ssl://[fe80::20c:29ff:fe9a:a07e]:1884
  */
-#define MQTT_URI "tcp://iot.eclipse.org:1883"
-#define MQTT_USERNAME "admin"
-#define MQTT_PASSWORD "admin"
+
+#define MQTT_URI "tcp://mqtt.rt-thread.com:1883"
+#define MQTT_USERNAME "test"
+#define MQTT_PASSWORD "8C0E1DCCC041725E43A5D3666EFDE62E"
 #define MQTT_SUBTOPIC "/mqtt/test/"
 #define MQTT_PUBTOPIC "/mqtt/test/"
 
