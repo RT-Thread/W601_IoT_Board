@@ -55,13 +55,16 @@ int main(void)
 
     /* 等待系统初始化完毕 */
     rt_thread_mdelay(100);
-
-    /* 打开 MicroPython 命令交互界面 */
-    extern void mpy_main(const char *filename);
-    mpy_main(NULL);
+    
+    while(1)
+    {
+        /* 打开 MicroPython 命令交互界面 */
+        extern void mpy_main(const char *filename);
+        mpy_main(NULL);
+    }
 
     LOG_D("MicroPython will reset by user");
-    rt_hw_cpu_reset();
+//    rt_hw_cpu_reset();
 
     return 0;
 }
