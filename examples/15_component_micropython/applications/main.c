@@ -63,8 +63,5 @@ int main(void)
         mpy_main(NULL);
     }
 
-    LOG_D("MicroPython will reset by user");
-//    rt_hw_cpu_reset();
-
     return 0;
 }
