@@ -19,7 +19,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2016��9��7��     Urey         the first version
+ * 2016年9月7日     Urey         the first version
  */
 
 #include <rtthread.h>
@@ -250,7 +250,7 @@ void mips_exception_handler(mips_reg_ctx *ctx)
 	int 	i;
 	unsigned int epc;
 
-	//��� read_epc_count>0 ˵�� c_except_handler �ڶ� epc ʱ�����ˣ����� epc ������һ���µ��쳣
+	//如果 read_epc_count>0 说明 c_except_handler 在读 epc 时重入了，即读 epc 导致了一个新的异常
 	if (read_epc_count > 0)
 	{
 		printf("ERROR: read epc fail when except handle\n");
