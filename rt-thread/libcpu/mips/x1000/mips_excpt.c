@@ -232,7 +232,7 @@ exception_func_t rt_set_except_vector(int n, exception_func_t func)
 {
     exception_func_t old_handler ;
 
-    if ((n < 0) || (n >= RT_EXCEPTION_MAX) || (!func))
+    if ((n < 0) || (n >= 32) || (!func))
     {
         return 0;
     }
