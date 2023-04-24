@@ -279,8 +279,8 @@ static void serialize_params_data(void* _req_rsp_param, va_list* _params)
     cmp_message_info = va_arg(*_params, void*);
     params = va_arg(*_params, char*);
 
-    if(0 != cmp_message_info->ret) return;
     assert(req_rsp_param && cmp_message_info && req_rsp_param->key && req_rsp_param->value && params);
+    if(0 != cmp_message_info->ret) return;
 
     if (strcmp(params, "{}") == 0) {
         *(params + 1) = 0;
