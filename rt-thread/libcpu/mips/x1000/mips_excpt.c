@@ -19,7 +19,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2016Äê9ÔÂ7ÈÕ     Urey         the first version
+ * 2016ï¿½ï¿½9ï¿½ï¿½7ï¿½ï¿½     Urey         the first version
  */
 
 #include <rtthread.h>
@@ -230,13 +230,13 @@ int rt_hw_exception_init(void)
  */
 exception_func_t rt_set_except_vector(int n, exception_func_t func)
 {
-    exception_func_t old_handler = sys_exception_handlers[n];
+    exception_func_t old_handler ;
 
-    if ((n == 0) || (n > 32) || (!func))
+    if ((n < 0) || (n >= 32) || (!func))
     {
         return 0;
     }
-
+      old_handler = sys_exception_handlers[n]
     sys_exception_handlers[n] = func;
 
     return old_handler;
@@ -249,7 +249,7 @@ void mips_exception_handler(mips_reg_ctx *ctx)
 	int 	i;
 	unsigned int epc;
 
-	//Èç¹û read_epc_count>0 ËµÃ÷ c_except_handler ÔÚ¶Á epc Ê±ÖØÈëÁË£¬¼´¶Á epc µ¼ÖÂÁËÒ»¸öÐÂµÄÒì³£
+	//ï¿½ï¿½ï¿½ read_epc_count>0 Ëµï¿½ï¿½ c_except_handler ï¿½Ú¶ï¿½ epc Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ epc ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ì³£
 	if (read_epc_count > 0)
 	{
 		printf("ERROR: read epc fail when except handle\n");
