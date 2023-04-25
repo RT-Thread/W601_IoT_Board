@@ -378,7 +378,6 @@ static char *find_env(const char *key) {
         return NULL;
     }
     
-
     /* from data section start to data section end */
     env_start = (char *) ((char *) env_cache + ENV_PARAM_PART_BYTE_SIZE);
     env_end = (char *) ((char *) env_cache + ENV_PARAM_PART_BYTE_SIZE + get_env_detail_size());
