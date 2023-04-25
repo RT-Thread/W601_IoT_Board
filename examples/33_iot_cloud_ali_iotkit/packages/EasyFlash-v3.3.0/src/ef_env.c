@@ -356,7 +356,7 @@ static EfErrCode write_env(const char *key, const char *value) {
  */
 static char *find_env(const char *key) {
     char *env_start, *env_end, *env, *found_env = NULL;
-    size_t key_len = strlen(key), env_len;
+    size_t  env_len;
 
     if ((key == NULL) || *key == '\0') {
         EF_INFO("Flash ENV name must be not empty!\n");
@@ -372,6 +372,7 @@ static char *find_env(const char *key) {
         return NULL;
     }
 
+    size_t key_len = strlen(key);
     env = env_start;
     while (env < env_end) {
         /* the key length must be equal */
