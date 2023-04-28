@@ -66,6 +66,7 @@ char *LITE_format_nstring(const int len, const char *fmt, ...)
     LITE_ASSERT(tmp);
 
     if (NULL == tmp) {
+        va_end(ap);
         return NULL;
     }
     memset(tmp, 0, len + 2);
