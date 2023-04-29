@@ -41,9 +41,12 @@ err_handler:
         lite_queue->lite_queue_mutex = NULL;
     }
 
-    if (lite_queue) free(lite_queue);
+    if (lite_queue){
+        free(lite_queue);
+        lite_queue = NULL;
+    }
 
-    return lite_queue;
+    return NULL;
 }
 
 void lite_queue_destroy(lite_queue_t* _lite_queue)
