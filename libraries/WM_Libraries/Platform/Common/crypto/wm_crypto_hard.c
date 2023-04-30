@@ -1716,6 +1716,7 @@ int test_3des_cbc(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 out:
 	if(ct)
 		tls_mem_free(ct);
+	return ret;
 }
 int test_3des_ecb(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 	int ret=-1;
@@ -1777,6 +1778,7 @@ int test_3des_ecb(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 out:
 	if(ct)
 		tls_mem_free(ct);
+	return ret;
 }
 int test_des_ecb(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 	int ret=-1;
@@ -1838,6 +1840,7 @@ int test_des_ecb(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 out:
 	if(ct)
 		tls_mem_free(ct);
+	return ret;
 }
 int test_des_cbc(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 	int ret=-1;
@@ -1899,6 +1902,7 @@ int test_des_cbc(char* key, int keylen, char * IV, char* pt, int len, u8 mode){
 out:
 	if(ct)
 		tls_mem_free(ct);
+	return ret;
 }
 int test_sha1(unsigned char *pt, int len){
 	int i = 0, ret = -1;
